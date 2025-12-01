@@ -225,7 +225,7 @@ export default function VisaApply() {
     }
 
     setLoading(true);
-
+    console.log(productId + "Pro");
     // fetch product from backend endpoint: GET /api/product/:productId
     fetch(`${API}/api/product/${encodeURIComponent(productId)}`)
       .then(async (res) => {

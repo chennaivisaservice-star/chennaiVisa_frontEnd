@@ -273,8 +273,7 @@ export default function ReviewPay() {
       const options = {
         key:
           order.key ||
-          import.meta.env.VITE_RAZORPAY_KEY_ID ||
-          "rzp_test_Rk1cUlbT1flWi9",
+          import.meta.env.VITE_RAZORPAY_KEY_ID ,
         amount: order.amount, // paise returned by server
         currency: order.currency || "INR",
         name: "Chennai Visa",
@@ -298,6 +297,7 @@ export default function ReviewPay() {
             .then((data) => {
               setIsProcessing(false);
               if (data.status === "ok") {
+                alert("Payment SuccessFull")
                 navigate("/", {
                   state: { paymentId: data.razorpay_payment_id },
                 });
