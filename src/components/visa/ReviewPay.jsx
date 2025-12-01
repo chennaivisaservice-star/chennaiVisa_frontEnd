@@ -684,7 +684,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import LoginModal from "../../components/auth/LoginModal";
 import { useApp } from "../../context/ApplicationContext";
 import { useAuth } from "../../context/AuthContext";
-
 /* load razorpay script if not present */
 const useRazorpayScript = () => {
   useEffect(() => {
@@ -707,7 +706,7 @@ function formatMoney(n) {
 export default function ReviewPay() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { travellers: appTravellers = [] } = useApp();
+  const { travellers: appTravellers = [], clearTravellers } = useApp();
   const { user } = useAuth();
   useRazorpayScript();
 
@@ -960,7 +959,7 @@ export default function ReviewPay() {
                   },
                   createdAt: data.createdAt || new Date().toISOString(),
                 };
-
+                clearTravellers();
                 // navigate to payment success page with payload
                 navigate("/payment-success", { state: payload });
               } else {

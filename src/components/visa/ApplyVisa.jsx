@@ -1,4 +1,3 @@
-
 // src/pages/ApplyVisa.jsx
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useNavigate, Link, useLocation } from "react-router-dom";
@@ -30,6 +29,7 @@ export default function ApplyVisa() {
     travellers: appTravellers = [],
     visaMeta,
     setDates,
+    removeTraveller,
   } = useApp();
 
   const [localTravellers, setLocalTravellers] = useState(appTravellers || []);
@@ -103,7 +103,14 @@ export default function ApplyVisa() {
   useEffect(() => {
     setLocalTravellers(appTravellers || []);
   }, [appTravellers]);
-
+  const handleAddTraveler = () => {
+    if (!dates.start || !dates.end) {
+      alert("Please fill out your travelling dates");
+      return;
+    }
+    navigate(`/visa/${slug}/${purpose}/traveller/new`, navState);
+  };
+  
   // calculated values
   const baseVisaPrice = Number(selectedProduct?.price || 0);
   const currency = selectedProduct?.currency || "₹";
@@ -117,55 +124,36 @@ export default function ApplyVisa() {
   const endRef = useRef(null);
 
   // load travellers from your backend (getTravellersToday)
-  const loadTravellers = async () => {
-    try {
-      setLoadingTravellers(true);
 
-      const stored = localStorage.getItem("userSession");
-      const parentEmail = stored ? JSON.parse(stored)?.email : null;
-
-      if (!parentEmail) {
-        // No parent email — nothing to load
-        setLocalTravellers([]);
-        return;
-      }
-
-      const res = await fetch(
-        `${API}/getTravellersToday?parentEmail=${encodeURIComponent(
-          parentEmail
-        )}`
-      );
-      if (!res.ok) {
-        throw new Error("Failed to fetch travellers");
-      }
-      const data = await res.json();
-
-      // Expecting data.travellers to be an array
-      const fetchedTravellers = Array.isArray(data.travellers)
-        ? data.travellers
-        : [];
-      setLocalTravellers(fetchedTravellers);
-
-      // store a simple totalPrice snapshot in localStorage (if desired)
-      localStorage.setItem(
-        "totalPrice",
-        String(fetchedTravellers.length * baseVisaPrice || 0)
-      );
-    } catch (error) {
-      console.error(error);
-      setLocalTravellers([]);
-    } finally {
-      setLoadingTravellers(false);
-    }
+  const rmvTraveller = (idx) => {
+    removeTraveller(idx);
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
+    // console.log(JSON.stringify(localTravellers));
     if (!user) {
       setShowLogin(true);
       return;
     }
     if (!localTravellers.length) return;
-    navigate(`/visa/${slug}/${purpose}/review`, navState);
+
+    try {
+      const res = await fetch(`${API}/api/addTraveller`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ data: localTravellers }),
+      });
+
+      if (!res.ok) {
+        const txt = await res.text();
+        throw new Error(txt || "Failed to save traveller");
+      }
+
+      navigate(`/visa/${slug}/${purpose}/review`, navState);
+    } catch (err) {
+      console.log(err);
+      return;
+    }
   };
 
   // Loading / error states
@@ -281,18 +269,16 @@ export default function ApplyVisa() {
               </h3>
 
               <div className="flex gap-2">
-                <button
+                {/* <button
                   onClick={loadTravellers}
                   className="px-4 py-2 rounded-full border bg-gray-100 text-gray-700 hover:bg-gray-200"
                   disabled={loadingTravellers}
                 >
                   {loadingTravellers ? "Loading..." : "Load Travellers"}
-                </button>
+                </button> */}
 
                 <button
-                  onClick={() =>
-                    navigate(`/visa/${slug}/${purpose}/traveller/new`, navState)
-                  }
+                  onClick={handleAddTraveler}
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-900 text-white hover:bg-blue-800"
                 >
                   <Plus className="w-4 h-4" /> Add New Traveler
@@ -310,9 +296,7 @@ export default function ApplyVisa() {
                 </p>
                 <button
                   className="mt-4 px-5 py-2 rounded-full bg-blue-900 text-white hover:bg-blue-800"
-                  onClick={() =>
-                    navigate(`/visa/${slug}/${purpose}/traveller/new`, navState)
-                  }
+                  onClick={handleAddTraveler}
                 >
                   Add Your First Traveler
                 </button>
@@ -320,23 +304,31 @@ export default function ApplyVisa() {
             ) : (
               <ul className="divide-y">
                 {localTravellers.map((t, idx) => (
-                  <li
-                    key={t._id || t.id || idx}
-                    className="py-3 flex items-center justify-between"
-                  >
-                    <div>
-                      <div className="font-medium text-gray-900">
-                        {t.firstName} {t.lastName}
+                  <>
+                    <button
+                      onClick={() => rmvTraveller(t.id)}
+                      className="text-red-500 font-bold mr-3"
+                    >
+                      X
+                    </button>
+                    <li
+                      key={t.id || idx}
+                      className="py-3 flex items-center justify-between"
+                    >
+                      <div>
+                        <div className="font-medium text-gray-900">
+                          {t.firstName} {t.lastName}
+                        </div>
+                        <div className="text-xs text-gray-500">
+                          {t.gender} • {String(t.dob).substring(0, 10)} •{" "}
+                          {t.passportNumber}
+                        </div>
                       </div>
-                      <div className="text-xs text-gray-500">
-                        {t.gender} • {String(t.dob).substring(0, 10)} •{" "}
-                        {t.passportNumber}
+                      <div className="text-right text-sm text-gray-500">
+                        {t.email}
                       </div>
-                    </div>
-                    <div className="text-right text-sm text-gray-500">
-                      {t.email}
-                    </div>
-                  </li>
+                    </li>
+                  </>
                 ))}
               </ul>
             )}

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useParams, useNavigate, Link, useLocation } from "react-router-dom";
 import { ArrowLeft, Save } from "lucide-react";
@@ -6,7 +5,7 @@ import { useApp } from "../../context/ApplicationContext";
 
 export default function TravellerForm() {
   const { slug, purpose } = useParams();
-  const { dates } = useApp();
+  const { dates, addTraveller } = useApp();
   const navigate = useNavigate();
   const location = useLocation();
   const productId = location.state?.productId;
@@ -65,29 +64,31 @@ export default function TravellerForm() {
     if (!isFormValid) return null;
     setLoading(true);
     setError("");
+    addTraveller(form);
+    setLoading(false);
+    return true
+    // try {
+    //   const res = await fetch(`${API}/api/addTraveller`, {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify({ data: { ...form, productId } }),
+    //   });
 
-    try {
-      const res = await fetch(`${API}/api/addTraveller`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ data: { ...form, productId } }),
-      });
+    //   if (!res.ok) {
+    //     const txt = await res.text();
+    //     throw new Error(txt || "Failed to save traveller");
+    //   }
 
-      if (!res.ok) {
-        const txt = await res.text();
-        throw new Error(txt || "Failed to save traveller");
-      }
-
-      const data = await res.json();
-      // return object so caller can inspect
-      return data;
-    } catch (err) {
-      console.error(err);
-      setError(err.message || "Save failed");
-      return null;
-    } finally {
-      setLoading(false);
-    }
+    //   const data = await res.json();
+    //   // return object so caller can inspect
+    //   return data;
+    // } catch (err) {
+    //   console.error(err);
+    //   setError(err.message || "Save failed");
+    //   return null;
+    // } finally {
+    //   setLoading(false);
+    // }
   };
 
   const save = async () => {
@@ -299,7 +300,7 @@ export default function TravellerForm() {
               {loading ? "Saving..." : "Save & Add More"}
             </button>
 
-            <button
+            {/* <button
               onClick={saveAndContinue}
               disabled={!isFormValid || loading}
               className={`inline-flex items-center gap-2 rounded-full px-6 py-2.5 ${
@@ -309,7 +310,7 @@ export default function TravellerForm() {
               }`}
             >
               {loading ? "Saving..." : "Save & Continue"}
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
