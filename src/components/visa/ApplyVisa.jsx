@@ -371,17 +371,17 @@ export default function ApplyVisa() {
               </div>
             </div>
 
-            {selectedProduct?.deliveryDate && (
+            {/* {selectedProduct?.deliveryDate && (
               <div className="text-blue-700 bg-blue-50 px-2 py-1 rounded">
                 Get your visa by: {selectedProduct.deliveryDate}
               </div>
-            )}
+            )} */}
 
-            {selectedProduct?.stayDays && (
+            {/* {selectedProduct?.stayDays && (
               <div className="text-purple-700 bg-purple-50 px-2 py-1 rounded">
                 Max Stay: {selectedProduct.stayDays} days
               </div>
-            )}
+            )} */}
 
             <div className="pt-2 border-t mt-2 flex justify-between">
               <div>

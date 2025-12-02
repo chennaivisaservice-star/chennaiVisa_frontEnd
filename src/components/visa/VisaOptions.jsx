@@ -537,12 +537,12 @@ export default function VisaOptions() {
                     <span>{p.title}</span>
                   </div>
 
-                  <div className="mt-3 inline-flex items-center gap-2 text-sm text-slate-600">
+                  {/* <div className="mt-3 inline-flex items-center gap-2 text-sm text-slate-600">
                     <Sun className="w-4 h-4 text-sky-500" />
                     <span className="px-2 py-1 bg-sky-50 text-sky-700 rounded-full">
                       Get your visa by: {p.deliveryDate}
                     </span>
-                  </div>
+                  </div> */}
 
                   <div className="mt-3 flex flex-wrap gap-2">
                     {(p.badges || []).map((b) => (
