@@ -214,6 +214,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Plane, Search } from "lucide-react";
+import { useApp } from "../../context/ApplicationContext";
 
 const TABS = ["All", "Trending", "E-Visa", "Express", "Cheapest"];
 
@@ -230,6 +231,7 @@ export default function Visacard() {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [fetchError, setFetchError] = useState("");
+  const { clearTravellers } = useApp();
 
   // use environment variable or fallback to localhost:3000
   const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:3000";
@@ -239,7 +241,7 @@ export default function Visacard() {
     setLoading(true);
     setFetchError("");
     setCountries([]);
-
+    clearTravellers();
     (async () => {
       try {
         const res = await fetch(`${API_BASE}/api/countries`, {
