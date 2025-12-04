@@ -8,7 +8,7 @@ const Hero = () => {
     <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-white pt-24">
       {/* Background Image */}
       <img
-        src="https://images.pexels.com/photos/2133989/pexels-photo-2133989.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        src="https://images.pexels.com/photos/8281064/pexels-photo-8281064.jpeg"
         alt="Visa Travel Background"
         className="absolute inset-0 w-full h-full object-cover"
       />
