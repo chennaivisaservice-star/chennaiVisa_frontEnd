@@ -63,9 +63,9 @@ function Contactform() {
                     Our Location
                   </h3>
                   <p className="text-slate-700 text-sm leading-relaxed">
-                    12/26, 1st Floor, K K Salai, Kaveri Rangan
+                    NO 03 SECOND FLOOR MALAVIYA AVENUE
                     <br />
-                    Nagar, Saligramam, Chennai - 600093
+                    THIRUVAINMIYUR CHENNAI 600041
                     <br />
                     <span className="font-medium">
                       (No walk-ins, Appointment Required,
@@ -86,7 +86,7 @@ function Contactform() {
                     Phone Number
                   </h3>
                   <p className="text-slate-700 text-sm font-medium">
-                    +91 9709708777
+                    +91 98848 83757
                   </p>
                   <p className="text-slate-500 text-sm">
                     (Monday to Saturday, 10 AM - 6 PM)
@@ -104,7 +104,7 @@ function Contactform() {
                     Send Email
                   </h3>
                   <p className="text-slate-700 text-sm font-medium">
-                    support@tripare.com
+                    info@chennaivisaservices.in
                   </p>
                 </div>
               </div>
