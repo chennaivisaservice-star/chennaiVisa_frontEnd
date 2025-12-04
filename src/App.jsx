@@ -32,7 +32,7 @@ export default function App() {
         <ApplicationProvider>
           <div className="min-h-screen flex flex-col">
             <Navbar />
-            <main className="pt-24">
+            <main className="">
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/visa" element={<Visa />} />
