@@ -181,7 +181,7 @@ const Footer = () => {
                 ].map((item, i) => (
                   <li key={i}>
                     <a
-                      href="#"
+                      href="/privacy-policy"
                       className="text-blue-200 hover:text-[#F9CC00] transition-colors flex items-center gap-2"
                     >
                       <span>›</span> {item}
