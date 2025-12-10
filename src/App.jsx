@@ -22,6 +22,7 @@ import Blog from "./components/home/Blog";
 import ProfilePage from "./components/common/ProfilePage";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import NotFound from "./pages/NotFound";
+import WhatsappFloatingButton from "./components/common/WhatsappFloatingButton";
 
 export default function App() {
   return (
@@ -69,6 +70,8 @@ export default function App() {
               </Routes>
             </main>
             <Footer />
+            {/* WhatsApp Floating Button added here */}
+            <WhatsappFloatingButton />
           </div>
         </ApplicationProvider>
       </BrowserRouter>
