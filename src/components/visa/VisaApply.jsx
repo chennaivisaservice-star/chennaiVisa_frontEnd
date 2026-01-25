@@ -330,7 +330,15 @@ useEffect(() => {
         </div>
       </div>
 
-      <LoginModal isOpen={showLogin} onClose={() => setShowLogin(false)} />
+     <LoginModal
+  isOpen={showLogin}
+  onClose={() => setShowLogin(false)}
+  onSuccess={() => {
+    setShowLogin(false);
+    setPendingNext(true);
+  }}
+/>
+
     </div>
   );
 }
