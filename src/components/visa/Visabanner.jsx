@@ -2,7 +2,7 @@ import React from "react";
 
 const VisaBanner = () => {
   return (
-    <section className="relative bg-linear-to-r from-blue-50 to-blue-100 h-[70vh] md:h-[55vh] lg:h-[70vh] flex items-center overflow-hidden pt-20 md:pt-24">
+    <section className="relative bg-linear-to-r from-blue-50 to-blue-100 h-[70vh] md:h-[70vh] lg:h-[70vh] flex items-center overflow-hidden pt-20 md:pt-24">
       {/* Yellow accent bar */}
       <div className="absolute bottom-0 left-0 right-0 h-4 bg-yellow-400"></div>
 
