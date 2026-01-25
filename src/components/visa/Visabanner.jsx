@@ -31,7 +31,7 @@ const VisaBanner = () => {
           {/* Image */}
           <div className="relative flex justify-center lg:justify-end">
             <img
-              src="https://images.pexels.com/photos/4662438/pexels-photo-4662438.jpeg?auto=compress&cs=tinysrgb&w=800"
+              src="https://images.pexels.com/photos/4922356/pexels-photo-4922356.jpeg"
               alt="Couple traveling with luggage"
               className="w-4/5 max-w-sm rounded-lg shadow-lg object-cover"
             />
