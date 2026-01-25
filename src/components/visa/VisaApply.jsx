@@ -126,7 +126,7 @@ export default function VisaApply() {
 
   if (!data) {
     return (
-      <div className="max-w-6xl mx-auto p-6">
+      <div className="max-w-6xl mx-auto p-32">
         <div className="rounded-2xl overflow-hidden shadow-lg">
           <div className="p-6 bg-white">
             <h1 className="text-2xl font-bold text-gray-800">
