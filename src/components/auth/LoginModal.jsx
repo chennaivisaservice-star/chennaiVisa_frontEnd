@@ -9,17 +9,11 @@ const LoginModal = ({ isOpen, onClose, onSuccess }) => {
 
   if (!isOpen) return null;
 
+  // ✅ Single correct handler
   const handleSuccess = (payload) => {
     login(payload);
-
-    const redirect = sessionStorage.getItem("postLoginRedirect");
-    if (redirect) {
-      sessionStorage.removeItem("postLoginRedirect");
-      window.location.href = redirect;
-      return;
-    }
-
-    onClose();
+    if (onSuccess) onSuccess();
+    else onClose();
   };
 
   return (
@@ -32,11 +26,13 @@ const LoginModal = ({ isOpen, onClose, onSuccess }) => {
 
       {/* Modal */}
       <div className="relative bg-gray-900 border border-gray-700 rounded-2xl shadow-2xl w-full max-w-md mx-4 overflow-hidden">
+
         {/* Header */}
         <div className="flex justify-between items-center p-6 border-b border-gray-700">
           <h2 className="text-2xl font-bold text-white">
             {activeTab === "login" ? "Welcome Back" : "Create Account"}
           </h2>
+
           <button
             onClick={onClose}
             className="text-gray-400 hover:text-white transition-colors p-1 rounded-lg hover:bg-gray-800"
