@@ -167,7 +167,7 @@ export default function VisaApply() {
   }
 
   return (
-    <div className="relative pt-32">
+    <div className="relative pt-36">
       <div className={showLogin ? "pointer-events-none blur-sm" : ""}>
         <div className="max-w-6xl mx-auto p-6 pt-32 space-y-8">
           {/* Breadcrumb */}
