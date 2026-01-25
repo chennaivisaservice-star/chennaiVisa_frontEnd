@@ -26,7 +26,7 @@ const Faqbanner = () => {
           {/* Image */}
           <div className="relative flex justify-center lg:justify-end">
             <img
-              src="https://images.pexels.com/photos/4662438/pexels-photo-4662438.jpeg?auto=compress&cs=tinysrgb&w=800"
+              src="https://images.pexels.com/photos/11022636/pexels-photo-11022636.jpeg"
               alt="Couple traveling with luggage"
               className="w-3/4 max-w-md rounded-lg shadow-lg object-cover lg:mr-6"
             />
