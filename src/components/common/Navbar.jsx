@@ -144,7 +144,7 @@ const Navbar = () => {
                 className={`transition-colors ${
                   location.pathname === to
                     ? "text-yellow-400"
-                    : "text-blue-900 hover:text-yellow-400"
+                    : "text-blue-900 hover:text-yellow-400 text-bold"
                 }`}
               >
                 {label}
