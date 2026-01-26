@@ -4,8 +4,8 @@ import {
   Mail,
   Instagram,
   Facebook,
-  Twitter,
-  Linkedin,
+  // Twitter,
+  // Linkedin,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -60,7 +60,6 @@ function Contactform() {
     <div className="min-h-screen bg-slate-50 py-12 px-4">
       <div className="max-w-6xl mx-auto bg-white rounded-3xl shadow-lg overflow-hidden">
         <div className="grid md:grid-cols-2 gap-8 p-8 md:p-12">
-
           {/* LEFT SIDE */}
           <div className="space-y-8">
             <div>
@@ -71,7 +70,8 @@ function Contactform() {
                 Contact with Us for <br /> Your Any Help
               </h1>
               <p className="text-slate-500 text-sm leading-relaxed">
-                Need Help With Your Visa? We're here to assist you at every step.
+                Need Help With Your Visa? We're here to assist you at every
+                step.
               </p>
             </div>
 
@@ -81,7 +81,9 @@ function Contactform() {
                 <MapPin className="w-6 h-6 text-blue-900" />
               </div>
               <div>
-                <h3 className="text-yellow-500 font-semibold mb-2">Our Location</h3>
+                <h3 className="text-yellow-500 font-semibold mb-2">
+                  Our Location
+                </h3>
                 <p className="text-sm text-slate-700">
                   NO 03 SECOND FLOOR MALAVIYA AVENUE <br />
                   THIRUVAINMIYUR CHENNAI 600041
@@ -113,12 +115,47 @@ function Contactform() {
               </div>
             </div>
 
+            <div className="flex gap-4">
+              <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center">
+                <Mail className="w-6 h-6 text-blue-900" />
+              </div>
+              <div>
+                <h3 className="text-yellow-500 font-semibold mb-2">Registration No</h3>
+                <p className="text-sm text-slate-700">
+                  33BVXPD2230A1Z4
+                </p>
+              </div>
+            </div>
+
+            <div className="flex gap-4">
+              <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center">
+                <Mail className="w-6 h-6 text-blue-900" />
+              </div>
+              <div>
+                <h3 className="text-yellow-500 font-semibold mb-2">ISO No</h3>
+                <p className="text-sm text-slate-700">
+                  1S0-9001-2015
+                </p>
+              </div>
+            </div>
+
             {/* SOCIAL */}
             <div className="flex gap-3 pt-4">
-              <Instagram />
-              <Facebook />
-              <Twitter />
-              <Linkedin />
+              <a
+                href=" https://www.instagram.com/chennaivisaservices/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Instagram />
+              </a>
+
+              <a
+                href="https://www.facebook.com/profile.php?id=61583343781733"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Facebook />
+              </a>
             </div>
           </div>
 
@@ -129,7 +166,6 @@ function Contactform() {
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-5">
-
               <input
                 type="text"
                 name="name"
@@ -184,10 +220,8 @@ function Contactform() {
               >
                 Submit
               </button>
-
             </form>
           </div>
-
         </div>
       </div>
     </div>
