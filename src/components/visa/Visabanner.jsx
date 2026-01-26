@@ -31,7 +31,7 @@ const VisaBanner = () => {
           {/* Image */}
           <div className="relative flex justify-center lg:justify-end">
             <img
-              src="https://images.pexels.com/photos/4922356/pexels-photo-4922356.jpeg"
+              src="https://www.informalnewz.com/wp-content/uploads/2024/06/New-Visa-Rules.jpg"
               alt="Couple traveling with luggage"
               className="w-4/5 max-w-sm rounded-lg shadow-lg object-cover"
             />
