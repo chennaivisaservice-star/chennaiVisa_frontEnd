@@ -440,7 +440,7 @@ function Pagination({ page, totalPages, onChange }) {
   for (let i = start; i <= end; i++) nums.push(i);
 
   return (
-    <div className="mt-8 flex items-center justify-center gap-2">
+    <div className="mt-8 flex items-center justify-center gap-2 overflow-x-hidden">
       <button
         onClick={() => onChange(1)}
         disabled={page === 1}
