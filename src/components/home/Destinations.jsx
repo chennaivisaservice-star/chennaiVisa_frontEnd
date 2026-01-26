@@ -137,8 +137,8 @@ export default function Visacard() {
         
         {/* Header row */}
         <div className="flex flex-col md:flex-row gap-4 md:items-center md:justify-between mb-6">
-          <div className="w-full md:w-auto overflow-x-auto no-scrollbar">
-            <div className="flex gap-2 bg-white rounded-full p-1.5 shadow-sm w-max md:w-auto min-w-max">
+          <div className="w-full overflow-x-auto scrollbar-hide">
+            <div className="flex gap-2 bg-white rounded-full p-1.5 shadow-sm w-max">
               {TABS.map((tab) => (
                 <button
                   key={tab}
