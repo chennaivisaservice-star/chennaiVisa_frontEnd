@@ -4,8 +4,8 @@ import {
   Mail,
   Instagram,
   Facebook,
-  book,
-  check,
+  Book,
+  Check,
   // Twitter,
   // Linkedin,
 } from "lucide-react";
