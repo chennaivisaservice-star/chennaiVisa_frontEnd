@@ -18,10 +18,10 @@ function Contactform() {
     message: "",
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log("Form submitted:", formData);
+  // };
 
   const handleChange = (e) => {
     setFormData({
@@ -143,7 +143,12 @@ function Contactform() {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form
+              action="https://formspree.io/f/xdagebrz"
+              method="POST"
+              className="space-y-5"
+            >
+              <input type="hidden" name="_subject" value="New Contact Form Submission" />
               {/* Name */}
               <div>
                 <label className="block text-slate-700 font-medium text-sm mb-2">
