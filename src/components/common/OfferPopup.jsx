@@ -20,7 +20,6 @@ const OfferPopup = () => {
   return (
     <div className="fixed inset-0 z-[999] bg-black/60 flex items-center justify-center px-3">
       <div className="bg-white w-full max-w-md rounded-xl p-6 relative shadow-xl animate-scaleIn">
-
         {/* Close */}
         <button
           onClick={() => setShow(false)}
@@ -31,7 +30,7 @@ const OfferPopup = () => {
 
         {/* Title */}
         <h2 className="text-2xl font-bold text-center text-blue-900">
-          🎉 Special Travel Offers
+          🎉 Special Travel Offers Get Upto 50% Discount
         </h2>
 
         <p className="text-center text-gray-600 mt-2">
@@ -40,7 +39,6 @@ const OfferPopup = () => {
 
         {/* Offers */}
         <div className="mt-5 space-y-3">
-
           <div className="flex justify-between bg-yellow-100 px-4 py-3 rounded-lg">
             <span>Travel Insurance</span>
             <strong>₹500 OFF</strong>
@@ -55,17 +53,17 @@ const OfferPopup = () => {
             <span>USA Visa Appointment Slots</span>
             <strong>Available</strong>
           </div>
-
         </div>
 
         {/* CTA */}
-        <button
-          onClick={() => setShow(false)}
-          className="mt-6 w-full bg-yellow-400 text-blue-900 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition"
+        <a
+          href="https://api.whatsapp.com/send/?phone=919884883757&text&type=phone_number&app_absent=0"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 block text-center w-full bg-yellow-400 text-blue-900 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition"
         >
           Claim Offer
-        </button>
-
+        </a>
       </div>
     </div>
   );
