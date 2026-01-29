@@ -95,7 +95,7 @@ const Navbar = () => {
       // optionally populate session from auth user
       setUserSession(
         (prev) =>
-          prev || { name: user.name, picture: user.picture, phone: user.phone }
+          prev || { name: user.name, picture: user.picture, phone: user.phone },
       );
       setIsUserLoggedIn(true);
     } else {
@@ -124,7 +124,19 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 w-full">
+      {/* Top Info Bar */}
+      <div className="fixed top-0 left-0 right-0 z-[60] bg-[#002b5c] text-white text-xs sm:text-sm">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center px-4 py-1 gap-1">
+          <span>
+            <strong>GST No:</strong> 33BVXPD2230A1Z4
+          </span>
+          <span>
+            <strong>ISO No:</strong> ISO-9001-2015
+          </span>
+        </div>
+      </div>
+
+      <nav className="fixed top-[28px] sm:top-[32px] left-0 right-0 z-50 w-full">
         <div className="bg-[#f1f1f1]/95 backdrop-blur text-blue-900 flex items-center justify-between px-6 py-3 shadow-lg w-full">
           <Link to="/" onClick={goTop} className="flex items-center gap-2">
             <img
