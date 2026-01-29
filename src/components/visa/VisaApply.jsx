@@ -133,7 +133,7 @@ export default function VisaApply() {
   if (!data) {
     return (
       <div className="max-w-6xl mx-auto p-32">
-        <div className="rounded-2xl overflow-hidden shadow-lg">
+        <div className="w-full rounded-2xl overflow-hidden shadow-lg">
           <div className="p-4 sm:p-6 bg-white">
             <h1 className="text-2xl font-bold text-gray-800">
               {product?.title} ({product?.slug})
@@ -173,7 +173,7 @@ export default function VisaApply() {
   }
 
   return (
-    <div className="relative pt-[80px] sm:pt-[96px]">
+    <div className="relative pt-[80px] sm:pt-[96px] overflow-x-hidden">
       <div className={showLogin ? "pointer-events-none blur-sm" : ""}>
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 pt-6 sm:pt-32 space-y-8">
           {/* Breadcrumb */}
@@ -200,7 +200,7 @@ export default function VisaApply() {
               alt={data.country}
               className="w-full h-40 sm:h-56 object-cover"
             />
-            <div className="p-6 bg-white">
+            <div className="p-4 sm:p-6 bg-white">
               <h1 className="text-2xl font-bold text-gray-800">
                 {product ? product.title : ""} ({data.country})
               </h1>
