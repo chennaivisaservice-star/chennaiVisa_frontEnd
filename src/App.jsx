@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/common/Navbar";
 import Footer from "./components/common/Footer";
+import OfferPopup from "./components/common/OfferPopup";
 import Home from "./pages/Home";
 import Visa from "./pages/Visa";
 import VisaDetail from "./components/visa/VisaDetail";
@@ -78,6 +79,8 @@ export default function App() {
             <Footer />
             {/* WhatsApp Floating Button added here */}
             <WhatsappFloatingButton />
+            {/*POP up */}
+            <OfferPopup />
           </div>
         </ApplicationProvider>
       </BrowserRouter>
