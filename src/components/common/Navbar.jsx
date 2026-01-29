@@ -137,7 +137,7 @@ const Navbar = () => {
       </div>
 
       <nav className="fixed top-[28px] sm:top-[32px] left-0 right-0 z-50 w-full">
-        <div className="bg-[#f1f1f1]/95 backdrop-blur text-blue-900 flex items-center justify-between px-6 py-3 shadow-lg w-full">
+        <div className="bg-[#f1f1f1]/95 backdrop-blur text-blue-900 flex items-center justify-between px-6 py-4 shadow-lg w-full">
           <Link to="/" onClick={goTop} className="flex items-center gap-2">
             <img
               src="/logo.png"
