@@ -173,9 +173,9 @@ export default function VisaApply() {
   }
 
   return (
-    <div className="relative pt-[80px] sm:pt-[96px] overflow-x-hidden">
+    <div className="relative w-full pt-[80px] sm:pt-[96px] overflow-x-hidden">
       <div className={showLogin ? "pointer-events-none blur-sm" : ""}>
-        <div className="w-screen max-w-6xl mx-auto px-4 sm:px-6 pt-6 sm:pt-32 space-y-8">
+        <div className="w-full max-w-none sm:max-w-6xl mx-auto px-4 sm:px-6 pt-6 sm:pt-32 space-y-8">
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-600 mb-2 flex flex-wrap gap-1">
             <Link to="/" className="hover:text-blue-600">
