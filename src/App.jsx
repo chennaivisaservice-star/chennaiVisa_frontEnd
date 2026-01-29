@@ -19,7 +19,7 @@ import ReviewPay from "./components/visa/ReviewPay";
 
 import ScrollToTop from "./components/common/ScrollToTop";
 import ApplicationProvider from "./context/ApplicationContext";
-import Blog from "./components/home/Blog";
+// import Blog from "./components/home/Blog";
 import ProfilePage from "./components/common/ProfilePage";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import NotFound from "./pages/NotFound";
@@ -68,7 +68,7 @@ export default function App() {
 
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/faq" element={<FAQ />} />
-                <Route path="/blogs" element={<Blog />} />
+                {/* <Route path="/blogs" element={<Blog />} /> */}
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/terms-conditions" element={<TermsConditions />} />
                 <Route path="/cancellation-refunds" element={<CancellationRefund />} />                
