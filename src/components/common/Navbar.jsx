@@ -243,7 +243,7 @@ const Navbar = () => {
 
         {/* Mobile Sidebar */}
         <div
-          className={`fixed top-0 left-0 h-screen w-[80%] sm:w-[70%] bg-white shadow-2xl z-50 flex flex-col justify-between transform transition-transform duration-300 ${
+          className={`fixed top-0 left-0 h-screen w-[80%] sm:w-[70%] bg-white shadow-2xl z-[999] flex flex-col justify-between transform transition-transform duration-300 ${
             isOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
