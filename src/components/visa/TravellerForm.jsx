@@ -105,7 +105,7 @@ export default function TravellerForm() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10 mt-8">
       <nav className="text-sm text-gray-600 mb-4 flex flex-wrap gap-1">
         <Link to="/" className="hover:text-blue-600">
           Home
