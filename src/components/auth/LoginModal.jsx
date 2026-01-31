@@ -2,31 +2,32 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import EmailForm from "./EmailForm.jsx";
 import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const LoginModal = ({ isOpen, onClose, onSuccess }) => {
   const [activeTab, setActiveTab] = useState("login");
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   if (!isOpen) return null;
 
   // ✅ Single correct handler
- const handleSuccess = (payload) => {
-  // save user in auth context
-  login(payload);
+  const handleSuccess = (payload) => {
+    // save user in auth context
+    login(payload);
 
-  // check redirect stored by protected pages
-  const redirect = sessionStorage.getItem("postLoginRedirect");
+    // check redirect stored by protected pages
+    const redirect = sessionStorage.getItem("postLoginRedirect");
 
-  if (redirect) {
-    sessionStorage.removeItem("postLoginRedirect");
-    window.location.href = redirect; // or use navigate()
-  } else if (onSuccess) {
-    onSuccess();
-  } else {
-    onClose();
-  }
-};
-
+    if (redirect) {
+      sessionStorage.removeItem("postLoginRedirect");
+      navigate(redirect); // or use navigate()
+    } else if (onSuccess) {
+      onSuccess();
+    } else {
+      onClose();
+    }
+  };
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center">
@@ -38,7 +39,6 @@ const LoginModal = ({ isOpen, onClose, onSuccess }) => {
 
       {/* Modal */}
       <div className="relative bg-gray-900 border border-gray-700 rounded-2xl shadow-2xl w-full max-w-md mx-4 overflow-hidden">
-
         {/* Header */}
         <div className="flex justify-between items-center p-6 border-b border-gray-700">
           <h2 className="text-2xl font-bold text-white">
