@@ -1,12 +1,12 @@
 import { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import { Mail } from "lucide-react";
-import { useAuth } from "../../context/AuthContext";
+// import { useAuth } from "../../context/AuthContext";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 const EmailForm = ({ activeTab, onSuccess }) => {
   const isSignup = activeTab === "signup";
-  const { login } = useAuth();
+  // const { login } = useAuth();
   // const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -47,7 +47,7 @@ const EmailForm = ({ activeTab, onSuccess }) => {
         await fakeLogin();
       }
       // persist to auth context so navbar shows user
-      login({ name: isSignup ? name.trim() : undefined, email });
+      // login({ name: isSignup ? name.trim() : undefined, email });
       onSuccess({ name: isSignup ? name.trim() : undefined, email });
     } catch (err) {
       setError(
