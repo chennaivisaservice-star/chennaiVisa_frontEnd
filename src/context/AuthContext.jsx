@@ -22,7 +22,7 @@ export default function AuthProvider({ children }) {
       try {
         const token = localStorage.getItem(tokenKey);
         const googleSession = JSON.parse(
-          localStorage.getItem("userSession") || "null"
+          localStorage.getItem("userSession") || "null",
         );
 
         if (!token && !googleSession) {
@@ -88,11 +88,11 @@ export default function AuthProvider({ children }) {
     setUser(payload);
 
     // Redirect back to intended page
-    const redirect = sessionStorage.getItem("postLoginRedirect");
-    if (redirect) {
-      sessionStorage.removeItem("postLoginRedirect");
-      window.history.pushState({}, "", redirect);
-    }
+    // const redirect = sessionStorage.getItem("postLoginRedirect");
+    // if (redirect) {
+    //   sessionStorage.removeItem("postLoginRedirect");
+    //   window.history.pushState({}, "", redirect);
+    // }
   };
 
   // ✅ LOGOUT (NO PAGE RELOAD)
