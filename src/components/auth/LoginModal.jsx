@@ -10,11 +10,23 @@ const LoginModal = ({ isOpen, onClose, onSuccess }) => {
   if (!isOpen) return null;
 
   // ✅ Single correct handler
-  const handleSuccess = (payload) => {
-    login(payload);
-    if (onSuccess) onSuccess();
-    else onClose();
-  };
+ const handleSuccess = (payload) => {
+  // save user in auth context
+  login(payload);
+
+  // check redirect stored by protected pages
+  const redirect = sessionStorage.getItem("postLoginRedirect");
+
+  if (redirect) {
+    sessionStorage.removeItem("postLoginRedirect");
+    window.location.href = redirect; // or use navigate()
+  } else if (onSuccess) {
+    onSuccess();
+  } else {
+    onClose();
+  }
+};
+
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center">
