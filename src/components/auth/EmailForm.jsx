@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { Mail } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import { GoogleLogin } from "@react-oauth/google";
@@ -7,7 +7,7 @@ import { jwtDecode } from "jwt-decode";
 const EmailForm = ({ activeTab, onSuccess }) => {
   const isSignup = activeTab === "signup";
   const { login } = useAuth();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -73,21 +73,25 @@ const EmailForm = ({ activeTab, onSuccess }) => {
       )}
       <div className="d-flex gap-2 sign-oauth my-4 text-white text-center">
         <GoogleLogin
-          onSuccess={(credentialResponse) => {
-            const token = credentialResponse.credential;
-            // console.log(credentialResponse);
-            localStorage.setItem("GoogleJwt", token);
-            const decoded = jwtDecode(token);
-            localStorage.setItem("userSession", JSON.stringify(decoded));
-            alert(`Welcome ${decoded.name}!`);
-            window.location.reload();
-            navigate("/");
-          }}
-          onError={() => {
-            console.log("Login Failed");
-          }}
-        />
-      </div>
+  onSuccess={(credentialResponse) => {
+    const token = credentialResponse.credential;
+    const decoded = jwtDecode(token);
+
+    const userPayload = {
+      name: decoded.name,
+      email: decoded.email,
+      picture: decoded.picture,
+      googleToken: token,
+    };
+
+    // 🔥 send user to LoginModal handler
+    onSuccess(userPayload);
+  }}
+  onError={() => {
+    console.log("Google Login Failed");
+  }}
+/>
+
       {/* <form onSubmit={handleSubmit} className="space-y-4">
         {isSignup && (
           <div>
