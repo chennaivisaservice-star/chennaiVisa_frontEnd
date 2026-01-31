@@ -85,7 +85,7 @@ export default function VisaApply() {
   const handleNext = () => {
     if (!product) return;
 
-    if (!user) {
+    if (!user || !user.email) {
       sessionStorage.setItem(
         "postLoginRedirect",
         `/visa/${slug}/${purpose}/applyvisa?productId=${product.id}`,
