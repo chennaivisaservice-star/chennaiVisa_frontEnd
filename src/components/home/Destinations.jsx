@@ -2,6 +2,8 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Plane, Search } from "lucide-react";
 import { useApp } from "../../context/ApplicationContext";
+import { useAuth } from "../../context/AuthContext";
+import LoginModal from "../../components/auth/LoginModal";
 
 const TABS = ["All", "Trending", "E-Visa", "Express", "Cheapest"];
 
@@ -19,9 +21,21 @@ export default function Visacard() {
   const [loading, setLoading] = useState(true);
   const [fetchError, setFetchError] = useState("");
   const { clearTravellers } = useApp();
+  const { user } = useAuth();
+  const [showLogin, setShowLogin] = useState(false);
 
   // use environment variable or fallback to localhost:3000
   const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
+  const handleCardClick = (country) => {
+    if (!user) {
+      sessionStorage.setItem("postLoginRedirect", `/visa/${country.slug}`);
+      setShowLogin(true);
+      return;
+    }
+
+    navigate(`/visa/${country.slug}`);
+  };
 
   useEffect(() => {
     let mounted = true;
@@ -52,7 +66,7 @@ export default function Visacard() {
           console.error(
             "/api/countries returned non-JSON:",
             contentType,
-            text.slice(0, 1000)
+            text.slice(0, 1000),
           );
           if (mounted)
             setFetchError("Server returned non-JSON response (see console).");
@@ -119,22 +133,21 @@ export default function Visacard() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 font-sans pt-24 md:pt-28 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         {/* Section Heading Card */}
-  <div className="bg-white rounded-3xl shadow-sm px-6 py-12 mb-10 text-center">
-    <p className="text-yellow-500 font-semibold text-sm uppercase tracking-wider mb-3">
-      TRENDY TRAVEL DESTINATIONS
-    </p>
+        <div className="bg-white rounded-3xl shadow-sm px-6 py-12 mb-10 text-center">
+          <p className="text-yellow-500 font-semibold text-sm uppercase tracking-wider mb-3">
+            TRENDY TRAVEL DESTINATIONS
+          </p>
 
-    <h2 className="text-4xl md:text-5xl font-bold text-blue-900 leading-tight tracking-tight">
-      Explore Our Most Popular Destinations,
-    </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-blue-900 leading-tight tracking-tight">
+            Explore Our Most Popular Destinations,
+          </h2>
 
-    <h2 className="text-4xl md:text-5xl font-bold text-blue-900 tracking-tight mt-2">
-      Tailored For Every Traveler
-    </h2>
-  </div>
-        
+          <h2 className="text-4xl md:text-5xl font-bold text-blue-900 tracking-tight mt-2">
+            Tailored For Every Traveler
+          </h2>
+        </div>
+
         {/* Header row */}
         <div className="flex flex-col md:flex-row gap-4 md:items-center md:justify-between mb-6">
           <div className="w-full overflow-x-auto scrollbar-hide">
@@ -182,7 +195,7 @@ export default function Visacard() {
           {current.map((country) => (
             <div
               key={country.slug}
-              onClick={() => navigate(`/visa/${country.slug}`)}
+              onClick={() => handleCardClick(country)}
               className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
             >
               <div className="relative h-56 overflow-hidden">
@@ -227,6 +240,7 @@ export default function Visacard() {
           />
         )}
       </div>
+      <LoginModal isOpen={showLogin} onClose={() => setShowLogin(false)} />
     </div>
   );
 }
