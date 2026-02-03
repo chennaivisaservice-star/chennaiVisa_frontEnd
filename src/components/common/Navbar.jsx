@@ -128,10 +128,10 @@ const Navbar = () => {
       <div className="fixed top-0 left-0 right-0 z-[60] h-8 bg-[#002b5c] text-white text-xs sm:text-sm flex items-center">
         <div className="max-w-7xl mx-auto flex flex-row justify-between items-center px-4 w-full">
           <span className="whitespace-nowrap">
-            <strong>GST No:</strong> 33BVXPD2230A1Z4
+            <strong> GST No: </strong> 33BVXPD2230A1Z4
           </span>
           <span className="whitespace-nowrap">
-            <strong>ISO-9001-2015 Certified Agency:</strong>
+            <strong> ISO-9001-2015 Certified Agency </strong>
           </span>
         </div>
       </div>
