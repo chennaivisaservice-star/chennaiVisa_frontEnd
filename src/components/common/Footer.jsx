@@ -1,5 +1,5 @@
 import React from "react";
-import { Phone, Mail, Globe, Instagram, Facebook } from "lucide-react";
+import { Phone, Mail, Globe, Instagram, Facebook, Youtube } from "lucide-react";
 
 const countries = [
   { code: "af", name: "Afghanistan" },
@@ -224,6 +224,16 @@ const Footer = () => {
                     className="flex items-center gap-2 text-blue-200 hover:text-[#F9CC00] transition-colors"
                   >
                     <Facebook size={16} /> Chennai Visa Serviceofficial
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://youtube.com/@chennaivisaservices?si=8XGjqT10ph2KzqnJ"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-blue-200 hover:text-[#F9CC00] transition-colors"
+                  >
+                    <Youtube size={16} /> Chennai Visa Serviceofficial
                   </a>
                 </li>
                 {/* <li>
